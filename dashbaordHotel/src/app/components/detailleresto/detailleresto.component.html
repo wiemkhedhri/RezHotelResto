@@ -1,0 +1,217 @@
+<div class="container-fluid">
+<br>
+<br>
+  <div class="row g-2">
+
+      <div >
+          <div class="card">
+
+              <div class="card-body">
+                  <h6 class="mb-3">Image de Menu de Restaurant </h6>
+                  <img
+
+                  style="    height: 230px; max-width: 241px;"
+                  alt="User Image"
+                  src="http://localhost:8081/restaurant/files/{{ restaurant.photomenu
+                  }}"
+                />
+                <button type="button" style="margin-left: 900px;   margin-top: -216px;" (click)="miseajour(restaurant.id)" class="btn btn-warning">Modifier le menu</button>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
+
+<br>
+<br>
+
+<!-- detaille table -->
+
+<button type="button" style="margin-left: 900px;   "  (click)="clickaddtable()" class="btn btn-warning">Ajouter Une Table</button>
+<br>
+      <h6    >Liste Des Tables</h6>
+  <div class="row clearfix">
+      <div class="col-lg-12">
+          <div class="card mb-4">
+
+              <div class="card-body">
+                  <div id="employee_List_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="row"><div class="col-sm-12 col-md-6">
+                     </div></div><div class="row"><div class="col-sm-12">
+                            <table id="employee_List" class="table table-hover dataTable no-footer dtr-inline" aria-describedby="employee_List_info" style="width: 1081px;">
+
+                      <tbody>
+                      <tr class="odd"   *ngFor="let f of tableinfo">
+
+
+
+                              <td>{{f.nom}}</td>
+                              <td>{{f.nbchaise}}</td>
+                              <td>
+                                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="modifier(f.id)" title="Edit"><i class="fa fa-edit"></i></button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert"  (click)="supprimer(f.id)"  title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
+                       </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- enddetailstable -->
+
+
+
+
+<!-- update formnbchaise  -->
+<div *ngIf="updatevrai==true">
+  <div class="container-fluid">
+
+    <div class="block-header py-lg-4 py-3">
+        <div class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <h4 class="m-0 fs-5"> Modifier la table</h4>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <form class="row g-3" id="basic-form" [formGroup]="updateform" (ngSubmit)="update()" novalidate>
+
+                      <div class="col-12">
+                        <label class="form-label">Nom de la Table </label>
+                        <input type="text" class="form-control" formControlName="nom"  required />
+                    </div>
+                        <div class="col-12">
+                            <label class="form-label">Nombre des Chaise </label>
+                            <input type="text" class="form-control" formControlName="nbchaise"  required />
+                        </div>
+
+
+
+
+
+
+                        <div class="col-12">
+                            <button  style="    margin-left: 928px;
+                            width: 203px;"  (click)="update()" type="submit" class="btn btn-primary">Mettre à jour</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+  </div>
+<!-- end nbchise -->
+
+<!-- update image -->
+<div *ngIf="hiddenimage==true">
+  <div class="container-fluid">
+
+    <div class="block-header py-lg-4 py-3">
+        <div class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <h4 class="m-0 fs-5">Changer l'image de menu </h4>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <form class="row g-3" id="basic-form" [formGroup]="updateformimage" (ngSubmit)="updateimage()" novalidate>
+                        <div class="col-12">
+                            <label class="form-label">Image de Menu </label>
+                            <input type="file" (change)="handleFileInput($event)" class="form-control" formControlName="file"  required />
+                        </div>
+
+
+
+
+
+
+                        <div class="col-12">
+                            <button  style="    margin-left: 928px;
+                            width: 203px;"     type="submit" class="btn btn-primary">Mettre à jour</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+  </div>
+
+<br>
+<br>
+<!-- add formnbchaise  -->
+<div *ngIf="addtablehidden==true">
+<hr>
+<hr>
+
+    <div class="block-header py-lg-4 py-3">
+        <div class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <h4 class="m-0 fs-5" > Ajouter  une table</h4>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <form class="row g-3" id="basic-form" [formGroup]="addtableform" (ngSubmit)="ajoutertable()" novalidate>
+
+                      <div class="col-12">
+                        <label class="form-label">Nom de la Table </label>
+                        <input type="text" class="form-control" formControlName="nom"  required />
+                    </div>
+                        <div class="col-12">
+                            <label class="form-label">Nombre des Chaise </label>
+                            <input type="text" class="form-control" formControlName="nbchaise"  required />
+                        </div>
+
+
+
+
+
+
+                        <div class="col-12">
+                            <button  style="    margin-left: 928px;
+                            width: 203px;"   type="submit" class="btn btn-primary">Ajouter une Table</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+
+<!-- add nbchise -->

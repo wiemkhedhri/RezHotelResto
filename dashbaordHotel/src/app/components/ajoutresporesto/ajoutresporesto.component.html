@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <br>
+  <br>
+  <div class="block-header py-lg-4 py-3">
+      <div class="row g-3">
+          <div class="col-md-6 col-sm-12">
+              <h2 class="m-0 fs-5"> Ajouter Un Responsable Restaurant</h2>
+
+          </div>
+
+      </div>
+  </div>
+
+  <div class="row g-3">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="Ajoutform" (ngSubmit)="ajout()" novalidate>
+                      <div class="col-12">
+                          <label class="form-label">Nom</label>
+                          <input type="text" class="form-control" formControlName="nom" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('nom')?.hasError('required') && Ajoutform.get('nom')?.touched" class="alert alert-danger">
+                        Nom is required
+
+                                       </div>
+                      <div class="col-12">
+                        <label class="form-label">Prenom</label>
+                        <input type="text" class="form-control"  formControlName="prenom" required />
+                    </div>
+                    <div style="color:red;" *ngIf="Ajoutform.get('prenom')?.hasError('required') && Ajoutform.get('prenom')?.touched" class="alert alert-danger">
+                      Prenom is required
+
+                                     </div>
+                      <div class="col-12">
+                          <label class="form-label">Telephone</label>
+                          <input type="number" class="form-control" formControlName="telephone" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('telephone')?.hasError('required') && Ajoutform.get('telephone')?.touched" class="alert alert-danger">
+                        Numero  is required
+
+                                       </div>
+                      <div class="col-12">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" formControlName="email" required />
+                    </div>
+                    <div style="color:red;" *ngIf="Ajoutform.get('email')?.hasError('required') && Ajoutform.get('email')?.touched" class="alert alert-danger">
+                      Email is required
+
+                                     </div>
+                    <div class="col-12">
+                      <label class="form-label">Mot de passe</label>
+                      <input type="password" class="form-control" formControlName="motpasse" required />
+                  </div>
+                  <div style="color:red;" *ngIf="Ajoutform.get('motpasse')?.hasError('required') && Ajoutform.get('motpasse')?.touched" class="alert alert-danger">
+                    Mot De Passe is required
+
+                                   </div>
+
+
+                      <div class="col-12">
+                          <button  style="    margin-left: 928px;
+                          width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>

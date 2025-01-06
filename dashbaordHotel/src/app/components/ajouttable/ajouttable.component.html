@@ -1,0 +1,51 @@
+<div class="container-fluid">
+<br>
+<br>
+  <div class="block-header py-lg-4 py-3">
+      <div class="row g-3">
+          <div class="col-md-6 col-sm-12">
+              <h2 class="m-0 fs-5"> Ajouter Les tables</h2>
+
+          </div>
+
+      </div>
+  </div>
+
+  <div class="row g-3">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="Ajoutform" (ngSubmit)="ajout()" novalidate>
+
+
+                    <div class="col-12">
+                      <label class="form-label">Nom de chaise</label>
+                      <input type="text" class="form-control" formControlName="nom" required />
+                  </div>
+                  <div style="color:red;" *ngIf="Ajoutform.get('nom')?.hasError('required') && Ajoutform.get('nom')?.touched" class="alert alert-danger">
+                    nom de chaise is required
+
+                                   </div>
+                      <div class="col-12">
+                          <label class="form-label">Nombre des Chaise</label>
+                          <input type="Number" class="form-control" formControlName="nbchaise" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('nbchaise')?.hasError('required') && Ajoutform.get('nbchaise')?.touched" class="alert alert-danger">
+                        Nombre des chaises is required
+
+                                       </div>
+                                       <div class="col-12">
+                                        <button  style="    margin-left: 928px;
+                                        width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>

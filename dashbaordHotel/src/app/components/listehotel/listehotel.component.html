@@ -1,0 +1,141 @@
+<br><br>
+<div class="card">
+  <div class="card-header">
+      <h6 class="card-title">Liste Des Hotels</h6>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-hover align-middle">
+              <thead>
+                  <tr>
+                      <th>Libelle</th>
+                      <th>Adresse</th>
+                      <th>Type Ambiance</th>
+                      <th>Nombre d'etoile</th>
+                      <th>Capacite</th>
+                      <th>Tarif</th>
+            <th>Actions</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr   *ngFor="let r of allhotels">
+                    <td>{{r.libelle}}</td>
+                      <td>{{r.adresse}}</td>
+                      <td>{{r.ambiance}}</td>
+                      <td>{{r.nb_etoile}}</td>
+                      <td>{{r.capacite}}</td>
+                      <td>{{r.tarif}}</td>
+
+
+
+<td>
+  <button type="button" class="btn btn-info" routerLink="/home/detaillehotel/{{r.id}}">Detaille</button>
+  <button type="button" (click)="patchform(r)"class="btn btn-warning">Modifier</button>
+  <button type="button" class="btn btn-danger" (click)="supprimer(r.id)">Supprimer</button>
+</td>
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+<br>
+
+
+<!-- updateform -->
+
+<!-- update form -->
+<div *ngIf="updatevrai==true">
+  <div class="container-fluid">
+
+    <div class="block-header py-lg-4 py-3">
+        <div class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <h4 class="m-0 fs-5"> Mettre à jour votre Hotels</h4>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="updateform" (ngSubmit)="update()" novalidate>
+                    <div class="col-12">
+                        <label class="form-label">Libelle</label>
+                        <input type="text" class="form-control" formControlName="libelle" required />
+                    </div>
+                    <div style="color:red;" *ngIf="updateform.get('libelle')?.hasError('required') && updateform.get('libelle')?.touched" class="alert alert-danger">
+                      Libelle is required
+
+                                     </div>
+                    <div class="col-12">
+                      <label class="form-label">Adresse</label>
+                      <input type="text" class="form-control"  formControlName="adresse" required />
+                  </div>
+                  <div style="color:red;" *ngIf="updateform.get('adresse')?.hasError('required') && updateform.get('adresse')?.touched" class="alert alert-danger">
+                    Adresse is required
+
+                                   </div>
+                    <div class="col-12">
+                        <label class="form-label">Type Ambiance</label>
+                        <input type="text" class="form-control" formControlName="ambiance" required />
+                    </div>
+                    <div style="color:red;" *ngIf="updateform.get('ambiance')?.hasError('required') && updateform.get('ambiance')?.touched" class="alert alert-danger">
+                      Type ambiance  is required
+
+                                     </div>
+
+
+
+
+                                               <div class="col-12">
+                                                <label class="form-label">Capacite</label>
+                                                <input type="text" class="form-control" formControlName="capacite" required />
+                                            </div>
+                                            <div style="color:red;" *ngIf="updateform.get('capacite')?.hasError('required') && updateform.get('capacite')?.touched" class="alert alert-danger">
+
+                                                             </div>
+                                                             <div class="col-12">
+                                                              <label class="form-label">Nombre d'étoile</label>
+                                                              <input type="number" class="form-control" formControlName="nb_etoile" required />
+                                                          </div>
+                                                          <div style="color:red;" *ngIf="updateform.get('nb_etoile')?.hasError('required') && updateform.get('nb_etoile')?.touched" class="alert alert-danger">
+                                                            Nombre d'etoile is required
+                                                                           </div>
+
+                                                                           <div class="col-12">
+                                                                            <label class="form-label">Tarif</label>
+                                                                            <input type="number" class="form-control" formControlName="tarif" required />
+                                                                        </div>
+                                                                        <div style="color:red;" *ngIf="updateform.get('tarif')?.hasError('required') && updateform.get('tarif')?.touched" class="alert alert-danger">
+                               Tarif is required
+
+                                                                                         </div>
+
+
+
+
+                    <div class="col-12">
+                        <button  style="    margin-left: 928px;
+                        width: 203px;"   type="submit" class="btn btn-primary">Modifier</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>
+  </div>

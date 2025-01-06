@@ -1,0 +1,141 @@
+
+
+
+
+<div id="layout" class="theme-orange">
+
+  <!-- Page Loader -->
+
+
+
+  <div id="wrapper">
+
+      <!-- top navbar -->
+      <nav class="navbar navbar-fixed-top" style="height: 59px;">
+
+  <div>
+    <img src="assets/images/logoo.png"   style="    width: 100px;
+    margin-top: -7px;
+    margin-left: 44px;"></div>
+          <div class="container-fluid">
+              <div class="navbar-btn">
+                  <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-bars"></i></button>
+
+              </div>
+              <div class="d-flex flex-grow-1 align-items-center">
+                  <div class="d-flex">
+
+                      <!-- <form id="navbar-search" class="navbar-form search-form position-relative d-none d-md-block">
+                          <input value="" class="form-control" placeholder="Search here..." type="text">
+                          <button type="button" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+                      </form> -->
+
+
+                  </div>
+
+
+                  <div class="flex-grow-1">
+                      <ul class="nav navbar-nav flex-row justify-content-end align-items-center">
+
+
+                          <li style="margin-top: -51px;"><a  (click)="logout()" class="icon-menu"><i class="fa fa-sign-out"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+      </nav>
+
+      <!-- Sidbar menu -->
+
+
+
+      <div id="left-sidebar" class="sidebar">
+          <div class="user-account p-3 mb-3">
+              <div class="d-flex mb-3 pb-3 border-bottom align-items-center">
+
+                  <div class="dropdown flex-grow-1">
+                    <br>
+
+                      <span class="d-block">Welcome</span>
+                      <a href="#" class="dropdown-toggle user-name" data-bs-toggle="dropdown"><strong>{{currentuser.nom}} {{currentuser.prenom}}</strong></a>
+                      <ul class="dropdown-menu p-2 shadow-sm">
+                          <li ><a routerLink="/home/profile"><i class="fa fa-user me-2"></i>My Profile</a></li>
+
+                          <li><a (click)="logout()"><i class="fa fa-power-off me-2"></i>Logout</a></li>
+                      </ul>
+                  </div>
+              </div>
+
+          </div>
+          <!-- nav tab: menu list -->
+
+          <!-- nav tab: content -->
+          <div class="tab-content px-0">
+              <div class="tab-pane fade show active" id="hr_menu" role="tabpanel" >
+                  <nav class="sidebar-nav">
+                      <ul class="metismenu list-unstyled">
+                          <li class="active"  *ngIf="currentuser.role=='admin'"><a routerLink="/home"><i
+                                      class="fa fa-tachometer"></i><span>Liste Responsable Restaurant</span></a></li>
+                          <li *ngIf="currentuser.role=='admin'"><a routerLink="/home/respohotel"><i class="fa fa-list-ul"></i>Liste Responsable Hotel</a></li>
+
+                          <li  *ngIf="currentuser.role=='admin'">
+                              <a  class="has-arrow"><i class="fa fa-users"></i><span> Les Responsables</span></a>
+                              <ul class="list-unstyled">
+                                  <li><a routerLink="/home/ajoutresporesto"   >Ajout Responsable Restaurant</a></li>
+                                  <li><a routerLink="/home/ajoutrespohotel">Ajout Responsable Hotel</a></li>
+
+                              </ul>
+                          </li>
+                          <li   *ngIf="currentuser.role=='admin'"><a routerLink="/home/getallrestaurant"><i class="fa fa-list-ul"></i><span>Liste  Restaurant</span></a></li>
+
+                            <li   *ngIf="currentuser.role=='admin'"><a routerLink="/home/getallreservresto">
+                              <i class="fa fa-list-ul"></i><span>Liste Réservation Restaurant</span></a></li>
+
+                            <li   *ngIf="currentuser.role=='admin'"><a routerLink="/home/getallhotels">
+                              <i class="fa fa-list-ul"></i><span>Liste  Hotels</span></a></li>
+
+                              <li   *ngIf="currentuser.role=='admin'"><a routerLink="/home/allreservhoetls">
+                                <i class="fa fa-list-ul"></i><span>Liste Réservation Hotels</span></a></li>
+
+                          <li  *ngIf="currentuser.role=='responsableresto'">
+                            <a  class="has-arrow">   <i class="fa fa-file-text-o"></i><span> Restaurant</span></a>
+                            <ul class="list-unstyled">
+                                <li><a routerLink="/home/ajoutresto">Ajout  Restaurant</a></li>
+                                <li><a routerLink="/home/listeresto">Liste Restaurant</a></li>
+                                <li><a routerLink="/home/listereservations">Liste Réservation Restaurant</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li  *ngIf="currentuser.role=='responsablehotel'">
+                          <a  class="has-arrow">   <i class="fa fa-file-text-o"></i><span> Hotels</span></a>
+                          <ul class="list-unstyled">
+                              <li><a routerLink="/home/ajouthotel">Ajout  Un Hotel</a></li>
+                              <li><a routerLink="/home/listehotels">Liste des Hotels</a></li>
+                              <li><a routerLink="/home/listereservationshotel">Liste Réservation Hotels</a></li>
+
+                          </ul>
+                      </li>
+
+                          <li><a  routerLink="/home/profile"><i class="fa fa-user"></i>Profile</a></li>
+
+                      </ul>
+                  </nav>
+              </div>
+
+
+          </div>
+      </div>
+
+      <div id="main-content">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+  </div>
+
+</div>

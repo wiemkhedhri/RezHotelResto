@@ -1,0 +1,88 @@
+<br><br>
+<div class="col-lg-12 col-md-12">
+  <div class="card client-detail">
+      <div class="card-body">
+          <div class="d-flex">
+              <div class="profile-image">
+                  <img src="assets/images/usersicon.jpg" style="width: 158px;" alt="">
+              </div>
+              <div class="details ms-3">
+                  <h4 class="h5 text-primary"><strong>{{user.nom}}</strong> {{user.prenom}} <span class="h6 text-secondary"></span></h4>
+                  <p><span class="h6 text-secondary">Numero Telephone</span> {{user.telephone}}</p>
+                  <p><span class="h6 text-secondary">Email</span> {{user.email}}</p>
+                  <!-- <p class="social-icon">
+                      <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                      <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                      <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                      <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
+                      <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a>
+                  </p> -->
+                  <div class="mt-3">
+                      <!-- <button class="btn btn-sm btn-primary">Follow</button> -->
+                      <button (click)="testbutton()" class="btn btn-sm btn-success">Update</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- update form -->
+<div *ngIf="updatevrai==true">
+<div class="container-fluid">
+
+  <div class="block-header py-lg-4 py-3">
+      <div class="row g-3">
+          <div class="col-md-6 col-sm-12">
+              <h4 class="m-0 fs-5"> Mettre à jour votre profile</h4>
+
+          </div>
+
+      </div>
+  </div>
+
+  <div class="row g-3">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="updateform" (ngSubmit)="update()" novalidate>
+                      <div class="col-12">
+                          <label class="form-label">Nom</label>
+                          <input type="text" class="form-control" formControlName="nom"  required />
+                      </div>
+
+                      <div class="col-12">
+                        <label class="form-label">Prenom</label>
+                        <input type="text" class="form-control" formControlName="prenom"   required />
+                    </div>
+
+                      <div class="col-12">
+                          <label class="form-label">Telephone</label>
+                          <input type="number" class="form-control"  formControlName="telephone" required />
+                      </div>
+
+                      <div class="col-12">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control"  formControlName="email" required />
+                    </div>
+
+
+
+
+
+                      <div class="col-12">
+                          <button  style="    margin-left: 928px;
+                          width: 203px;"   type="submit" class="btn btn-primary">Mettre à jour</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
+</div>

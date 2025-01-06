@@ -1,0 +1,90 @@
+<div class="container-fluid">
+
+
+  <br>
+  <br>
+    <div class="block-header py-lg-4 py-3">
+        <div class="row g-3">
+            <div class="col-md-6 col-sm-12">
+                <h2 class="m-0 fs-5"> Ajouter Un Hotel</h2>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <form class="row g-3" id="basic-form" [formGroup]="Ajoutform" (ngSubmit)="ajout()" novalidate>
+                        <div class="col-12">
+                            <label class="form-label">Libelle</label>
+                            <input type="text" class="form-control" formControlName="libelle" required />
+                        </div>
+                        <div style="color:red;" *ngIf="Ajoutform.get('libelle')?.hasError('required') && Ajoutform.get('libelle')?.touched" class="alert alert-danger">
+                          Libelle is required
+
+                                         </div>
+                        <div class="col-12">
+                          <label class="form-label">Adresse</label>
+                          <input type="text" class="form-control"  formControlName="adresse" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('adresse')?.hasError('required') && Ajoutform.get('adresse')?.touched" class="alert alert-danger">
+                        Adresse is required
+
+                                       </div>
+                        <div class="col-12">
+                            <label class="form-label">Type Ambiance</label>
+                            <input type="text" class="form-control" formControlName="ambiance" required />
+                        </div>
+                        <div style="color:red;" *ngIf="Ajoutform.get('ambiance')?.hasError('required') && Ajoutform.get('ambiance')?.touched" class="alert alert-danger">
+                          Type ambiance  is required
+
+                                         </div>
+
+
+
+
+                                                   <div class="col-12">
+                                                    <label class="form-label">Capacite</label>
+                                                    <input type="text" class="form-control" formControlName="capacite" required />
+                                                </div>
+                                                <div style="color:red;" *ngIf="Ajoutform.get('capacite')?.hasError('required') && Ajoutform.get('capacite')?.touched" class="alert alert-danger">
+
+                                                                 </div>
+                                                                 <div class="col-12">
+                                                                  <label class="form-label">Nombre d'étoile</label>
+                                                                  <input type="number" class="form-control" formControlName="nb_etoile" required />
+                                                              </div>
+                                                              <div style="color:red;" *ngIf="Ajoutform.get('nb_etoile')?.hasError('required') && Ajoutform.get('nb_etoile')?.touched" class="alert alert-danger">
+                                                                Nombre d'etoile is required
+                                                                               </div>
+
+                                                                               <div class="col-12">
+                                                                                <label class="form-label">Tarif</label>
+                                                                                <input type="number" class="form-control" formControlName="tarif" required />
+                                                                            </div>
+                                                                            <div style="color:red;" *ngIf="Ajoutform.get('tarif')?.hasError('required') && Ajoutform.get('tarif')?.touched" class="alert alert-danger">
+                                   Tarif is required
+
+                                                                                             </div>
+
+
+
+
+                        <div class="col-12">
+                            <button  style="    margin-left: 928px;
+                            width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  </div>

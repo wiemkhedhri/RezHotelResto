@@ -1,0 +1,33 @@
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+      <h6 class="card-title">Liste Responsables Hotel</h6>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-hover align-middle">
+              <thead>
+                  <tr>
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Telephone</th>
+                      <th>Mail</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr   *ngFor="let r of listerespo">
+                    <td>{{r.nom}}</td>
+                      <td>{{r.prenom}}</td>
+                      <td>{{r.telephone}}</td>
+                      <td>{{r.email}}</td>
+
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,281 @@
+
+<div class="container-fluid">
+  <div class="block-header py-lg-4 py-3">
+       <div class="row g-3">
+           <div class="col-md-6 col-sm-12">
+
+
+                      <button  class="btn btn-primary" style="margin-left: 791px;
+        width: 164px;"  (click)="hiddentestaddimage()" >Ajouter Une Image </button>
+
+
+<button  class="btn btn-primary" style="margin-left: 791px; margin-top: 15px;
+width: 164px;"  (click)="hiddentestaddchambre()" >Ajouter Une Chambre </button>
+
+
+           </div>
+
+       </div>
+   </div>
+   <br>
+
+   <div class="card-header">
+     <h6 class="card-title">Liste Des chambres</h6>
+ </div>
+ <div class="card-body">
+     <div class="table-responsive">
+         <table class="table table-hover align-middle">
+             <thead>
+                 <tr>
+                   <th>Type Logement</th>
+                   <th>Nombre Lit</th>
+                   <th> Tarif</th>
+             <th>Actions</th>
+                 </tr>
+             </thead>
+             <tbody>
+               <tr   *ngFor="let r of allchambre">
+                 <td>{{r.typelogement}}</td>
+                   <td>{{r.nblit}}</td>
+                   <td>{{r.tarif}}</td>
+  <td>
+    <button type="button"  (click)="patchchambre(r)" class="btn btn-warning">Modifier</button>
+    <button type="button" class="btn btn-danger" (click)="supprimerchambre(r.id)">Supprimer</button>
+
+  </td>
+
+               </tr>
+
+             </tbody>
+         </table>
+     </div>
+ </div>
+
+
+
+ <br>
+
+
+ <div class="row g-2">
+
+ <div class="col-lg-3 col-md-4 col-sm-12"   *ngFor="let i of allimages">
+
+     <div class="card" >
+
+             <div class="hover">
+                     <button type="button"  (click)="supprimer(i.id)" class="btn btn-icon btn-danger">
+                     <i class="fa fa-trash"></i>
+                 </button>
+             </div>
+             <div class="image">
+
+               <img src="http://localhost:8081/restaurant/files/{{ i.image
+               }}"  style="height: 182px;  width: 270px;" class="img-fluid">
+
+             </div>
+
+             <div class="file-name m-2">
+                 <p class="mb-0 text-muted"></p>
+                  <small class="d-flex justify-content-between"><span class="date text-muted">Description:{{i.description}}</span></small>
+             </div>
+
+     </div>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- addimage -->
+
+ <div   *ngIf="hiddenaddimage ==true ">
+ <div class="block-header py-lg-4 py-3">
+   <div class="row g-3">
+       <div class="col-md-6 col-sm-12">
+           <h2 class="m-0 fs-5"> Ajouter Les images</h2>
+
+       </div>
+
+   </div>
+ </div>
+
+ <div class="row g-3">
+   <div class="col-12">
+       <div class="card">
+           <div class="card-header">
+
+           </div>
+           <div class="card-body">
+               <form class="row g-3" id="basic-form" [formGroup]="ajoutimageform" (ngSubmit)="ajouterimage()" novalidate>
+
+
+                 <div class="col-12">
+                   <label class="form-label">Image Hotel</label>
+                   <input type="file" class="form-control"  (change)="handleFileInput($event)" formControlName="image" required />
+               </div>
+               <div style="color:red;" *ngIf="ajoutimageform.get('image')?.hasError('required') && ajoutimageform.get('image')?.touched" class="alert alert-danger">
+                image hotel is required
+
+                                </div>
+
+
+                                <div class="col-12">
+                                 <label class="form-label">Description Image</label>
+                                 <input type="text" class="form-control" formControlName="description" required />
+                             </div>
+                             <div style="color:red;" *ngIf="ajoutimageform.get('description')?.hasError('required') && ajoutimageform.get('description')?.touched" class="alert alert-danger">
+                              description is required
+
+                                              </div>
+
+                                    <div class="col-12">
+                                     <button  style="    margin-left: 928px;
+                                     width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                                 </div>
+               </form>
+           </div>
+       </div>
+   </div>
+
+ </div>
+ </div>
+<!-- add chambres -->
+
+<div   *ngIf="hiddentestadchambre ==true ">
+  <div class="block-header py-lg-4 py-3">
+    <div class="row g-3">
+        <div class="col-md-6 col-sm-12">
+            <h2 class="m-0 fs-5"> Ajouter Les Chambres</h2>
+
+        </div>
+
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <form class="row g-3" id="basic-form" [formGroup]="addchambreform" (ngSubmit)="addchambre()" novalidate>
+
+
+
+
+                                 <div class="col-12">
+                                  <label class="form-label">Type Logement</label>
+                                  <input type="text" class="form-control" formControlName="typelogement" required />
+                              </div>
+                              <div style="color:red;" *ngIf="addchambreform.get('typelogement')?.hasError('required') && addchambreform.get('typelogement')?.touched" class="alert alert-danger">
+                                Type Logement is required
+
+                                               </div>
+                                               <div class="col-12">
+                                                <label class="form-label">Nombre Lit</label>
+                                                <input type="number" class="form-control" formControlName="nblit" required />
+                                            </div>
+                                            <div style="color:red;" *ngIf="addchambreform.get('nblit')?.hasError('required') && addchambreform.get('nblit')?.touched" class="alert alert-danger">
+                                              Nombre Lit is required
+
+                                                             </div>
+                                                             <div class="col-12">
+                                                              <label class="form-label">Tarif</label>
+                                                              <input type="text" class="form-control" formControlName="tarif" required />
+                                                          </div>
+                                                          <div style="color:red;" *ngIf="addchambreform.get('tarif')?.hasError('required') && addchambreform.get('tarif')?.touched" class="alert alert-danger">
+                                                        tarif is required
+
+                                                                           </div>
+
+                                     <div class="col-12">
+                                      <button  style="    margin-left: 928px;
+                                      width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  </div>
+  </div>
+
+
+  <!-- updatechambre -->
+
+
+  <div   *ngIf="hiddentestupdatechambre ==true ">
+    <div class="block-header py-lg-4 py-3">
+      <div class="row g-3">
+          <div class="col-md-6 col-sm-12">
+              <h2 class="m-0 fs-5"> Modifier La Chambres</h2>
+
+          </div>
+
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="updatechambreform" (ngSubmit)="updatechambre()" novalidate>
+
+
+
+
+                                   <div class="col-12">
+                                    <label class="form-label">Type Logement</label>
+                                    <input type="text" class="form-control" formControlName="typelogement" required />
+                                </div>
+                                <div style="color:red;" *ngIf="updatechambreform.get('typelogement')?.hasError('required') && updatechambreform.get('typelogement')?.touched" class="alert alert-danger">
+                                  Type Logement is required
+
+                                                 </div>
+                                                 <div class="col-12">
+                                                  <label class="form-label">Nombre Lit</label>
+                                                  <input type="number" class="form-control" formControlName="nblit" required />
+                                              </div>
+                                              <div style="color:red;" *ngIf="updatechambreform.get('nblit')?.hasError('required') && updatechambreform.get('nblit')?.touched" class="alert alert-danger">
+                                                Nombre Lit is required
+
+                                                               </div>
+                                                               <div class="col-12">
+                                                                <label class="form-label">Tarif</label>
+                                                                <input type="text" class="form-control" formControlName="tarif" required />
+                                                            </div>
+                                                            <div style="color:red;" *ngIf="updatechambreform.get('tarif')?.hasError('required') && updatechambreform.get('tarif')?.touched" class="alert alert-danger">
+                                                          tarif is required
+
+                                                                             </div>
+
+                                       <div class="col-12">
+                                        <button  style="    margin-left: 928px;
+                                        width: 203px;"   type="submit" class="btn btn-primary">Modifier</button>
+                                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+    </div>
+    </div>
+

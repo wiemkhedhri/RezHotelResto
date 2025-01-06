@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+
+<br>
+<br>
+  <div class="block-header py-lg-4 py-3">
+      <div class="row g-3">
+          <div class="col-md-6 col-sm-12">
+              <h2 class="m-0 fs-5"> Ajouter Un Restaurant</h2>
+
+          </div>
+
+      </div>
+  </div>
+
+  <div class="row g-3">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-header">
+
+              </div>
+              <div class="card-body">
+                  <form class="row g-3" id="basic-form" [formGroup]="Ajoutform" (ngSubmit)="ajout()" novalidate>
+                      <div class="col-12">
+                          <label class="form-label">Libelle</label>
+                          <input type="text" class="form-control" formControlName="libelle" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('libelle')?.hasError('required') && Ajoutform.get('libelle')?.touched" class="alert alert-danger">
+                        Libelle is required
+
+                                       </div>
+                      <div class="col-12">
+                        <label class="form-label">Adresse</label>
+                        <input type="text" class="form-control"  formControlName="adresse" required />
+                    </div>
+                    <div style="color:red;" *ngIf="Ajoutform.get('adresse')?.hasError('required') && Ajoutform.get('adresse')?.touched" class="alert alert-danger">
+                      Adresse is required
+
+                                     </div>
+                      <div class="col-12">
+                          <label class="form-label">Type Ambiance</label>
+                          <input type="text" class="form-control" formControlName="typeambiance" required />
+                      </div>
+                      <div style="color:red;" *ngIf="Ajoutform.get('typeambiance')?.hasError('required') && Ajoutform.get('typeambiance')?.touched" class="alert alert-danger">
+                        Type ambiance  is required
+
+                                       </div>
+                      <div class="col-12">
+                        <label class="form-label">Heure Ouvert</label>
+                        <input type="time" class="form-control" formControlName="heureouvert" required />
+                    </div>
+                    <div style="color:red;" *ngIf="Ajoutform.get('heureouvert')?.hasError('required') && Ajoutform.get('heureouvert')?.touched" class="alert alert-danger">
+                      Heure ouvert is required
+
+                                     </div>
+                    <div class="col-12">
+                      <label class="form-label">Heure fermeture</label>
+                      <input type="time" class="form-control" formControlName="heureclosed" required />
+                  </div>
+                  <div style="color:red;" *ngIf="Ajoutform.get('heureclosed')?.hasError('required') && Ajoutform.get('heureclosed')?.touched" class="alert alert-danger">
+                    Heure fermeture is required
+
+                                   </div>
+
+                                                 <div class="col-12">
+                                                  <label class="form-label">Capacite</label>
+                                                  <input type="text" class="form-control" formControlName="capacite" required />
+                                              </div>
+                                              <div style="color:red;" *ngIf="Ajoutform.get('capacite')?.hasError('required') && Ajoutform.get('capacite')?.touched" class="alert alert-danger">
+
+                                                               </div>
+                                                               <div class="col-12">
+                                                                <label class="form-label">Type Cuisine</label>
+                                                                <input type="text" class="form-control" formControlName="typecuisine" required />
+                                                            </div>
+                                                            <div style="color:red;" *ngIf="Ajoutform.get('typecuisine')?.hasError('required') && Ajoutform.get('typecuisine')?.touched" class="alert alert-danger">
+                                                              Type Cuisine is required
+
+                                                                             </div>
+
+                                                                             <div class="col-12">
+                                                                              <label class="form-label">Photo Menu</label>
+                                                                              <input type="file" class="form-control" (change)="handleFileInput($event)" formControlName="photomenu" required />
+                                                                          </div>
+                                                                          <div style="color:red;" *ngIf="Ajoutform.get('photomenu')?.hasError('photomenu') && Ajoutform.get('motpasse')?.touched" class="alert alert-danger">
+                                                                            Photo Menu is required
+
+                                                                                           </div>
+
+                      <div class="col-12">
+                          <button  style="    margin-left: 928px;
+                          width: 203px;"   type="submit" class="btn btn-primary">Ajouter</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
